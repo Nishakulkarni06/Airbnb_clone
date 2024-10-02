@@ -33,9 +33,12 @@ module.exports.new = async  (req, res) => {
 
 module.exports.create = async (req, res, next) => {
   try {
-    console.log("create page opened")
-      const newListing = new Listing(req.body.listing);
-      await newListing.save();
+    let url = req.file.path;
+    let filename =req.file.filename;
+    console.log(url,"..",filename);
+    // console.log("create page opened")
+      // const newListing = new Listing(req.body.listing);
+      // await newListing.save();
       req.flash("success", "New Listing Added");
       return res.redirect("/listings"); // Use return to prevent further execution
   } catch (err) {
