@@ -7,8 +7,9 @@ const Listing = require("../models/listing.js");
 const { isLoggedIn } = require("../middleware.js");
 
 const listingData = require("../Controllers/listings.js")
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' }) 
+const {storage} = require("../CloudConfig.js");
+const multer  = require('multer');
+const upload = multer({ storage}) ;
 // Validation middleware for listing
 const validateListing = (req, res, next) => {
   const { error } = listingSchema.validate(req.body);
