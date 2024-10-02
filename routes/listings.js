@@ -25,18 +25,13 @@ router
 .get(
 wrapAsync(listingData.index)
 )
-// .post(        //create route
-//   isLoggedIn,
-//   validateListing, // Validate before creating
-//   wrapAsync(listingData.create)
-// );
-.post(upload.single("listings[image]"),(req,res)=>{
-  try{
-    res.send(req.file) 
-  } catch(err){
-    console.log(err)
-  }
-});
+.post(        //create route
+  isLoggedIn,
+  upload.single("listing[image]"),
+  validateListing, // Validate before creating
+  wrapAsync(listingData.create)
+);
+
 
 router.get(
   "/category/:category",
