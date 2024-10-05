@@ -14,6 +14,8 @@
 <div class="row">
   <div class="col-8 offset-2">
    
+   <p> <b>Owner </b> : <%= listing.owner.username %> &nbsp;&nbsp;
+   <b>Email </b> : <a href=""> <%= listing.owner.email %></a></p>
 
     <ul>
       <li><%= listing.description %></li>
@@ -29,14 +31,14 @@
     </ul>
     <br />
     <div class="btns">
-      <a
+      <button
         href="/listings/<%= listing._id%>/edit"
-        class="btn btn-dark col-1 add-btn edit-btn ml-3"
+        class="btn btn-dark col-1 add-btn edit-btn ml-3 btn-edit"
         >Edit
-      </a>
+      </button>
       <br /><br />
       <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
-        <button class="btn btn-dark del-btn ml-3">Delete</button>
+        <button class="btn btn-dark del-btn ml-3 del">Delete</button>
       </form>
     </div>
   </div>
@@ -113,7 +115,7 @@
         ></textarea>
         <div class="invalid-feedback">Please Enter A Review To Add</div>
       </div>
-      <button class="btn btn-outline-dark col-1">Submit</button>
+      <button class="btn btn-outline-dark col-1 d-sm-block btn-del">Submit</button>
     </form>
     <% } %>
     <hr />
@@ -135,7 +137,7 @@
             class="mb-3"
             method="POST"
           >
-            <button class="btn btn-sm btn-dark">Delete</button>
+            <button class="btn btn-sm btn-dark ">Delete</button>
           </form>
         </div>
       </div>

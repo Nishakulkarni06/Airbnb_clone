@@ -18,10 +18,13 @@ body{
 .navlink{
      color: #222222 !important; 
      text-decoration: none !important;
-     margin-top: 6px;
+     margin-top: 1px;
      margin-left: 10px;
 }
 
+.navbar-nav{
+    margin-right: 20px;
+}
 
 /* footer */
 .f-info-links a{
@@ -130,4 +133,27 @@ border: none !important;
     padding: 1rem;
     margin-left: 3rem;
   }
+
+
+  @media screen and (max-width: 750px) {
+    .navbar-nav .btn-search {
+        display: none;
+    }
+    .navbar-nav .form-control {
+        display: none; /* Hide the input field */
+    }
+    .tax-toogle {
+        display: none; /* Hide the input field */
+    }
+   
+}
+
+@media screen and (max-width: 1200px) {
+    form .btn-del{
+        width: 100px;
+    }
+    .btns .btn-edit{
+        width: 70px;
+    }
+}
 

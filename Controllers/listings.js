@@ -35,10 +35,12 @@ module.exports.create = async (req, res, next) => {
   try {
     let url = req.file.path;
     let filename =req.file.filename;
+    let {id}  = res.locals.currUser; 
     console.log(url,"..",filename);
-    // console.log("create page opened")
-      // const newListing = new Listing(req.body.listing);
-      // await newListing.save();
+      const newListing = new Listing(req.body.listing);
+      newListing.image = {url,filename}; 
+      newListing.owner = id ; 
+      await newListing.save();
       req.flash("success", "New Listing Added");
       return res.redirect("/listings"); // Use return to prevent further execution
   } catch (err) {
@@ -48,23 +50,64 @@ module.exports.create = async (req, res, next) => {
   }
 };
 
-  module.exports.edit = async (req, res, next) => {
-    try {
-        const { id } = req.params;
-        const listing = await Listing.findById(id);
-        if (!listing) {
-            req.flash("error", "Listing not found");
-            return res.redirect("/listings");
-        }
-        if (!listing.owner.equals(res.locals.currUser._id)) {
-            req.flash("error", "You don't have permission to edit this listing");
-            return res.redirect(`/listings/${id}`);
-        }
-        res.render("listings/edit.ejs", { listing });
-    } catch (err) {
-        console.error("Error fetching listing for edit:", err);
-        next(new ExpressError("Internal Server Error", 500));
+//   module.exports.edit = async (req, res, next) => {
+//     try {
+//         const { id } = req.params;
+//         const listing = await Listing.findByIdAndUpdate(id, {...req.body.listing});
+//         if (!listing) {
+//             req.flash("error", "Listing not found");
+//             return res.redirect("/listings");
+//         }
+//         if(typeof req.file != "undefined"){
+//           let url = req.file.path;
+//           let filename = req.file.filename;
+//           listing.image = {url,filename};
+//           await listing.save(); 
+//          }
+//         if (!listing.owner.equals(res.locals.currUser._id)) {
+//             req.flash("error", "You don't have permission to edit this listing");
+//             return res.redirect(`/listings/${id}`);
+//         }
+//         res.render("listings/edit.ejs", { listing });
+//     } catch (err) {
+//         console.error("Error fetching listing for edit:", err);
+//         next(new ExpressError("Internal Server Error", 500));
+//     }
+// };
+
+module.exports.edit = async (req, res, next) => {
+  try {
+      const { id } = req.params;
+      const listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing }, { new: true });
+
+      if (!listing) {
+          req.flash("error", "Listing not found");
+          return res.redirect("/listings");
+      }
+
+      if (typeof req.file !== "undefined") {
+          let url = req.file.path;
+          let filename = req.file.filename;
+          listing.image = { url, filename };
+          await listing.save();
+      }
+
+      if ( !listing.owner.equals(res.locals.currUser._id)) {
+          req.flash("error", "You don't have permission to edit this listing");
+          return res.redirect(`/listings/${id}`);
+      }
+
+      if (String(listing.owner) !== String(res.locals.currUser._id)) {
+        req.flash("error", "You don't have permission to edit this listing");
+        return res.redirect(`/listings/${id}`);
     }
+    
+
+      res.render("listings/edit.ejs", { listing });
+  } catch (err) {
+      console.error("Error fetching listing for edit:", err);
+      next(new ExpressError("Internal Server Error", 500));
+  }
 };
 
 
@@ -92,10 +135,12 @@ module.exports.create = async (req, res, next) => {
         req.flash("error", "Listing not found");
         return res.redirect("/listings");
     }
-    if (!listing.owner.equals(res.locals.currUser._id)) {
+    if (listing.owner._id.toHexString() != res.locals.currUser._id) {
         req.flash("error", "You don't have permission to delete this listing");
         return res.redirect(`/listings/${id}`);
     }
+    console.log("deleted");
+    console.log(listing.owner._id.toHexString());
     await Listing.findByIdAndDelete(id);
     req.flash("success", "Deleted Listing successfully");
     res.redirect("/listings");

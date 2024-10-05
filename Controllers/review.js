@@ -1,4 +1,5 @@
-const Listing = require("../models/listing")
+const Listing = require("../models/listing");
+const review = require("../models/review.js");
 const Review = require("../models/review.js");
 
 module.exports.post = async (req, res) => {
@@ -8,10 +9,13 @@ module.exports.post = async (req, res) => {
       newReview.author = req.user._id; 
       console.log(newReview);
       listing.reviews.push(newReview);
-  
+      if(newReview.rating < 1 ){
+        newReview.rating = 1 ;
+      }
+
       await newReview.save();
       await listing.save();
-  
+   
       console.log("New review saved");
       res.redirect(`/listings/${listing._id}`);
       req.flash('success',"new review saved")

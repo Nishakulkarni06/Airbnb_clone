@@ -1,84 +1,3 @@
-<!-- <% layout("/layout/boilerplate") %>
-<div class="row">
-  <div class="col-8 offset-2">
-    <h2>Create A New Listing</h2>
-    <form method="post" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
-      <div class="mb-3">
-        <label Title for="title" class="form-label">Title</label>
-        <input
-          name="listing[title]"
-          placeholder="enter title"
-          type="text"
-          class="form-control"
-          required
-        />
-        <div class="invalid-feedback">Please Provide a Title!</div>
-      </div>
-
-      <div class="mb-3">
-        <label Title for="description" class="form-label">Description</label>
-        <textarea
-          name="listing[description]"
-          placeholder="enter description"
-          class="form-control"
-          required
-        ></textarea>
-        <div class="invalid-feedback">Please Provide a Description!</div>
-      </div>
-
-      <div class="row">
-        <div class="mb-3 col-md-4">
-          <label Title for="price" class="form-label">Price</label>
-          <input
-            name="listing[price]"
-            placeholder="enter price"
-            type="text"
-            class="form-control"
-            required
-          />
-        <div class="invalid-feedback">Please Provide a Price!</div>
-        </div>
-
-        <div class="mb-3 col-md-8">
-          <label Title for="country" class="form-label">Country</label>
-          <input
-            name="listing[country]"
-            placeholder="enter country"
-            type="text"
-            class="form-control"
-            required
-          />
-        <div class="invalid-feedback">Please Provide a Country!</div>
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <label Title for="Image" class="form-label">Upload Listing Image : </label>
-        <input
-          name="listing[image]"
-          placeholder="enter image url/link"
-          type="file"
-          class="form-control"
-        />
-      </div>
-
-      <div class="mb-3">
-        <label Title for="location" class="form-label">Location</label>
-        <input
-          name="listing[location]"
-          placeholder="enter location"
-          type="text"
-          class="form-control"
-          required
-        />
-        <div class="invalid-feedback">Please Provide a Location!</div>
-      </div>
-
-      <button class="btn btn-dark add-btn">Add</button>
-    </form>
-  </div>
-</div> -->
-
 <% layout("/layout/boilerplate") %>
 <div class="row">
   <div class="col-8 offset-2">
@@ -89,6 +8,7 @@
       class="needs-validation"
       novalidate
       enctype="multipart/form-data"
+      
     >
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
@@ -150,7 +70,8 @@
           id="image"
           type="file"
           class="form-control"
-        />
+          required
+          />
       </div>
 
       <div class="mb-3">
