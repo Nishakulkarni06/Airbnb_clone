@@ -2,6 +2,8 @@ const Listing = require("../models/listing");
 const review = require("../models/review.js");
 const ExpressError = require("../utils/ExpressError.js");
 
+
+
 module.exports.category = async (req, res, next) => {
     try {
         const category = req.params.category;
@@ -42,6 +44,9 @@ module.exports.create = async (req, res, next) => {
       newListing.owner = id ; 
       await newListing.save();
       req.flash("success", "New Listing Added");
+
+
+
       return res.redirect("/listings"); // Use return to prevent further execution
   } catch (err) {
       console.error("Error adding new listing:", err);
@@ -139,8 +144,6 @@ module.exports.edit = async (req, res, next) => {
         req.flash("error", "You don't have permission to delete this listing");
         return res.redirect(`/listings/${id}`);
     }
-    console.log("deleted");
-    console.log(listing.owner._id.toHexString());
     await Listing.findByIdAndDelete(id);
     req.flash("success", "Deleted Listing successfully");
     res.redirect("/listings");
