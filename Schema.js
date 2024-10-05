@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const { category } = require("./Controllers/listings");
 
 module.exports.listingSchema = Joi.object({
 listing:Joi.object({
@@ -8,6 +9,7 @@ listing:Joi.object({
     country : Joi.string().required(),
     price : Joi.string().required(),
     image : Joi.string().allow("",null),
+    category:Joi.string().allow("",null) 
 }).required(), 
 }); 
 

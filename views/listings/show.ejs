@@ -31,12 +31,9 @@
     </ul>
     <br />
     <div class="btns">
-      <button
-        href="/listings/<%= listing._id%>/edit"
-        class="btn btn-dark col-1 add-btn edit-btn ml-3 btn-edit"
-        >Edit
-      </button>
-      <br /><br />
+        <a  href="/listings/<%= listing._id%>/edit" 
+          class="btn btn-dark col-1 add-btn edit-btn ml-3 btn-edit"
+          >Edit</a>
       <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
         <button class="btn btn-dark del-btn ml-3 del">Delete</button>
       </form>
