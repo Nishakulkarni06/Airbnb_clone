@@ -4,7 +4,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/ExpressError.js");
 const { listingSchema } = require("../Schema.js");
 const Listing = require("../models/listing.js");
-const { isLoggedIn } = require("../middleware.js");
+const { isLoggedIn, isReviewAuthor } = require("../middleware.js");
 
 const listingData = require("../Controllers/listings.js")
 const {storage} = require("../CloudConfig.js");
@@ -51,6 +51,7 @@ router.get(
 router.put(
   "/:id",
   isLoggedIn,
+  upload.single("listing[image]"),
   validateListing,
   wrapAsync(listingData.update) 
 );
