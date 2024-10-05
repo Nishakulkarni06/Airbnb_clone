@@ -44,11 +44,8 @@ module.exports.create = async (req, res, next) => {
       newListing.owner = id ; 
       await newListing.save();
       req.flash("success", "New Listing Added");
-
-
-
       return res.redirect("/listings"); // Use return to prevent further execution
-  } catch (err) {
+    } catch (err) {
       console.error("Error adding new listing:", err);
       // Pass the error to the next middleware
       return next(new ExpressError("Internal Server Error", 500));
@@ -145,9 +142,10 @@ module.exports.edit = async (req, res, next) => {
         return res.redirect(`/listings/${id}`);
     }
     await Listing.findByIdAndDelete(id);
-    req.flash("success", "Deleted Listing successfully");
     res.redirect("/listings");
-};
+    req.flash("success", "Deleted Listing successfully");
+
+  };
 
 
   module.exports.show = async (req, res, next) => {

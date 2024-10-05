@@ -157,3 +157,6 @@ border: none !important;
     }
 }
 
+.btns .btn-edit{
+    width: 70px;
+}
