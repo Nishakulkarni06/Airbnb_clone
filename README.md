@@ -6,11 +6,16 @@ Check out the live demo [here](https://wanderlust-51in.onrender.com/listings)!
 Welcome to the Airbnb Clone! This project is a full-stack web application replicating 
 core features of Airbnb, allowing users to browse, filter, and book listings. 🌍
 
-🚀 Features
+🚀 Features 
+
 🌟 Browse Listings: Explore thousands of unique stays worldwide!
+
 🔍 Search & Filter: Find exactly what you’re looking for with robust filtering options.
+
 🏷️ Dynamic Pricing: Real-time updates to pricing and availability.
+
 ❤️ Wishlist: Save your favorite places for future trips.
+
 🔐 User Authentication: Secure login and signup using JWT.
 
 💻 Technologies Used
