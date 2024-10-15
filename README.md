@@ -1,12 +1,13 @@
-###🏡 Airbnb Clone
+**🏡 Airbnb Clone**
 
 ## 🌐 Live Demo
-Check out the live demo [here](https://wanderlust-51in.onrender.com/listings)!
+**Check out the live demo** [here](https://wanderlust-51in.onrender.com/listings)!
 
 Welcome to the Airbnb Clone! This project is a full-stack web application replicating 
 core features of Airbnb, allowing users to browse, filter, and book listings. 🌍
+<br/>
 
-#🚀 Features 
+**🚀 Features**
 
 🌟 Browse Listings: Explore thousands of unique stays worldwide!
 
@@ -16,10 +17,11 @@ core features of Airbnb, allowing users to browse, filter, and book listings. �
 
 ❤️ Wishlist: Save your favorite places for future trips.
 
-🔐 User Authentication: Secure login and signup using JWT.
+🔐 User Authentication: Secure login and signup using JWT.  
+<br/>
+<br/>
 
-
-#💻 Technologies Used
+**💻 Technologies Used**
 
 Frontend: HTML,CSS, Tailwind CSS
 
@@ -30,8 +32,10 @@ Database: Mongodb
 Deployment: Render
 
 
+<br/>
+<br/>
 
-#⚙️ Setup & Installation
+**⚙️ Setup & Installation**
 
 1.Clone the repository:
 
@@ -45,8 +49,10 @@ npm install
 
 npm run dev
 
+<br/>
+<br/>
 
-#🛠️ Future Improvements
+**🛠️ Future Improvements**
 
 🧑‍🤝‍🧑 Social sharing features for listings
 
@@ -54,8 +60,10 @@ npm run dev
 
 📱 Improved mobile responsiveness
 
+<br/>
+<br/>
 
-#💡 Inspiration
+**💡 Inspiration**
 
 Inspired by the real Airbnb platform, this clone was built to practice full-stack development 
 skills and learn best practices for building scalable web applications.
